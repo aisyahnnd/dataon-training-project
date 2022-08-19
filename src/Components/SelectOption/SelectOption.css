@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  width: auto;
+}
+
+.label {
+  font-size: 16;
+  font-weight: 500;
+  margin-bottom: 0.6em;
+}
+
+.ant-select
+  ant-select-single
+  ant-select-show-arrow
+  ant-select-show-search {
+  border-radius: 20px;
+}

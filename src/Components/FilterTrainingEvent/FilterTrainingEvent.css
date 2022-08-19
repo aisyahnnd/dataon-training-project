@@ -1,0 +1,43 @@
+.container-grid-filter {
+  background-color: #fff;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.site-card-wrapper {
+  background-color: #fff;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  flex-direction: column;
+  display: flex;
+}
+
+.switch {
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.label {
+  font-size: 16;
+  font-weight: 500;
+  margin-bottom: 0.6em;
+}
+
+.wrapperButton {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 5px;
+}

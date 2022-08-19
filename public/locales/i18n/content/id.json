@@ -1,0 +1,95 @@
+{
+  "trainingTable": {
+    "title1": "Nama Acara",
+    "title2": {
+      "title": "Tipe Pelatihan",
+      "part1": "Kelas Online",
+      "part2": "Kelas Offline"
+    },
+    "title3": "Periode Acara",
+    "title4": "Nama Pelatih",
+    "title5": "Peringkat",
+    "title6": "Informasi Tambahan",
+    "title7": {
+      "title": "Status Pelatihan",
+      "part1": "Selesai",
+      "part2": "Akan Datang"
+    }
+  },
+  "mytrainingCard": {
+    "isComplete": {
+      "part1": "Acara Selesai",
+      "part2": "Acara Dimulai"
+    },
+    "button": {
+      "part1": "Umpan Balik",
+      "part2": "Lihat Lokasi"
+    },
+    "modal": "Peringkat Umpan Balik"
+  },
+  "alltrainingCard": {
+    "tooltip": {
+      "label": "Rekomendasi Pelatihan",
+      "sub1": "Anda telah bergabung dengan kelas",
+      "sub2": "Undang Lainnya"
+    }
+  },
+  "missingPage": "Maaf, halaman yang Anda kunjungi tidak ada.",
+  "missingPageBtn": "Kembali ke Dasbor",
+  "trainingCreateEditDetail": {
+    "number": "Nomor Acara",
+    "eventType": {
+      "label": "Tipe Acara",
+      "placeholder": "Pilih Tipe Acara",
+      "option1": "Kelas Online ",
+      "option2": "Kelas Offline "
+    },
+    "eventName": {
+      "label": "Nama Acara",
+      "placeholder": "Masukkan Nama Acara"
+    },
+    "eventThumbnail": {
+      "label": "Gambar Mini Acara",
+      "extra": "Resolusi gambar yang disarankan adalah 500x300 (rasio aspek 5:3, maks. 2 MB, jpg/jpeg)",
+      "button": "Klik untuk Mengunggah"
+    },
+    "date": "Tanggal",
+    "endDate": "Tanggal Berakhir",
+    "messageDate": "Silakan pilih waktu!",
+    "status": {
+      "label": "Status",
+      "message": "Silakan pilih item!",
+      "radio1": "Terbuka untuk Pendaftaran",
+      "radio2": "Pendaftaran Ditutup"
+    },
+    "trainer": {
+      "label": "Nama Pelatih",
+      "placeholder": "Masukkan Nama Pelatih"
+    },
+    "location": "Lokasi berdasarkan Latitude dan Longitude",
+    "information": {
+      "label": "Informasi",
+      "placeholder": "Masukkan Informasi Acara"
+    },
+    "button": {
+      "back": "Kembali",
+      "edit": "Ubah",
+      "submit": "Submit",
+      "delete": "Hapus",
+      "join": "Gabung Kelas",
+      "invite": "Undang Lainnya"
+    },
+    "subTitle": "Kursus Sepak Bola",
+    "joinedTeam": "Tim ",
+    "overview": "Ringkasan",
+    "person": " Orang",
+    "instructor": "Pengajar",
+    "resources": "Sumber daya"
+  },
+  "deleteConfirm": {
+    "title": "Apakah Anda yakin akan menghapus pelatihan ini?",
+    "content": "Ketika diklik tombol OK, data akan dihapus",
+    "okText": "Ya",
+    "cancelText": "Batal"
+  }
+}

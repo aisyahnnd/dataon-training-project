@@ -1,0 +1,95 @@
+{
+  "trainingTable": {
+    "title1": "EventName",
+    "title2": {
+      "title": "Training Type",
+      "part1": "Online Class",
+      "part2": "Offline Class"
+    },
+    "title3": "Event Period",
+    "title4": "Trainer Name",
+    "title5": "Ratings",
+    "title6": "Additional Info",
+    "title7": {
+      "title": "Training Status",
+      "part1": "Finish",
+      "part2": "On Going"
+    }
+  },
+  "mytrainingCard": {
+    "isComplete": {
+      "part1": "Event Completed",
+      "part2": "Event Started"
+    },
+    "button": {
+      "part1": "Give Feedback",
+      "part2": "View Location"
+    },
+    "modal": "Give Feedback Rating"
+  },
+  "alltrainingCard": {
+    "tooltip": {
+      "label": "Recommended Training",
+      "sub1": "You've joined the class",
+      "sub2": "Invite Others"
+    }
+  },
+  "missingPage": "Sorry, the page you visited does not exist.",
+  "missingPageBtn": "Back Dashboard",
+  "trainingCreateEditDetail": {
+    "number": "Event Number",
+    "eventType": {
+      "label": "Event Type",
+      "placeholder": "Select Event Type",
+      "option1": "Online Class ",
+      "option2": "Offline Class "
+    },
+    "eventName": {
+      "label": "Event Name",
+      "placeholder": "Input Event Name"
+    },
+    "eventThumbnail": {
+      "label": "Event Thumbnail",
+      "extra": "Recommended image resolution is 500x300 (5:3 aspect ratio, max. 2MB, jpg/jpeg)",
+      "button": "Click to Upload"
+    },
+    "date": "Date",
+    "endDate": "End Date",
+    "messageDate": "Please select time!",
+    "status": {
+      "label": "Status",
+      "message": "Please pick an item!",
+      "radio1": "Open for Registration",
+      "radio2": "Closed Registration"
+    },
+    "trainer": {
+      "label": "Trainer Name",
+      "placeholder": "Input Trainer Name"
+    },
+    "location": "Location based Latitude and Longitude",
+    "information": {
+      "label": "Information",
+      "placeholder": "Input Information Event"
+    },
+    "button": {
+      "back": "Back",
+      "edit": "Edit",
+      "submit": "Submit",
+      "delete": "Delete",
+      "join": "Join Class",
+      "invite": "Invite Others"
+    },
+    "subTitle": "Footbal Course",
+    "joinedTeam": "Joined Team ",
+    "overview": "Overview",
+    "person": " erson",
+    "instructor": "Instructor",
+    "resources": "Resources"
+  },
+  "deleteConfirm": {
+    "title": "Are you sure to delete this training?",
+    "content": "When clicked the OK button, data will be deleted",
+    "okText": "Yes",
+    "cancelText": "Cancel"
+  }
+}
