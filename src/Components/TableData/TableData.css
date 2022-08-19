@@ -1,0 +1,16 @@
+.ant-table-thead .ant-table-cell {
+  background-color: rgb(57, 154, 245);
+}
+
+.ant-table-thead .ant-table-cell {
+  color: #ffffff;
+}
+
+.ant-table-wrapper {
+  border-radius: 20px;
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+}

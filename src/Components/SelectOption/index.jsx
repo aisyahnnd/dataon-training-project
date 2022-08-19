@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import "./SelectOption.css";
 
-const SelectBox = ({
+const SelectOption = ({
   type,
   style,
   onChange,
@@ -58,9 +58,9 @@ const SelectBox = ({
   );
 };
 
-export default SelectBox;
+export default SelectOption;
 
-SelectBox.propTypes = {
+SelectOption.propTypes = {
   type: PropTypes.string.isRequired,
   style: PropTypes.object,
 };

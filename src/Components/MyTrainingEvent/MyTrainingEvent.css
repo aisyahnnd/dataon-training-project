@@ -1,0 +1,84 @@
+.site-card-wrapper {
+  background-color: #fff;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.title-event p {
+  font-size: medium;
+  font-weight: bold;
+  justify-items: left;
+}
+.rating {
+  display: flex;
+  justify-content: center;
+}
+.row-top {
+  border-bottom: 1px #cccccc solid;
+}
+
+.row-top-detail {
+  padding: 10px;
+}
+
+.row-bottom {
+  padding-left: 10px;
+  padding-right: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.row-bottom-detail {
+  margin-top: 10px;
+  align-items: center;
+  color: cornflowerblue;
+  font-size: x-small;
+  font-weight: 600;
+}
+
+.ant-carousel .slick-prev,
+.ant-carousel .slick-next,
+.ant-carousel .slick-prev:focus,
+.ant-carousel .slick-next:focus {
+  font-size: inherit;
+  color: white !important;
+  background-color: rgb(54, 54, 54) !important;
+  border-radius: 50%;
+  width: 30px !important;
+  height: 30px !important;
+  padding-top: 4px !important;
+  align-items: center !important;
+}
+
+.ant-carousel .slick-prev,
+.ant-carousel .slick-prev:hover {
+  color: white !important;
+  left: 20px !important;
+  z-index: 2 !important;
+}
+
+.ant-carousel .slick-prev:hover,
+.ant-carousel .slick-next:hover {
+  background-color: rgb(110, 110, 110) !important;
+}
+
+.slick-arrow.slick-prev {
+  font-size: 20px !important;
+}
+
+.ant-carousel .slick-next,
+.ant-carousel .slick-next:hover {
+  color: white !important;
+  right: 20px !important;
+  z-index: 2 !important;
+}
+
+.slick-arrow.slick-next {
+  font-size: 20px !important;
+}
+
+.modal .ant-modal-content,
+.modal .ant-modal-content .ant-modal-header {
+  border-radius: 20px 20px 20px 20px;
+}
