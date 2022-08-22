@@ -1,6 +1,6 @@
 import {
   ButtonIcon,
-  SelectBox,
+  SelectOption,
   Toggle,
   TextInput,
 } from "@/Components";
@@ -60,13 +60,13 @@ const FilterTrainingEvent = () => {
         style={{ width: 230, borderRadius: 5 }}
         onChange={(value) => debounceFunc(value.target.value)}
       />
-      <SelectBox
+      <SelectOption
         type="event"
         style={{ width: 230 }}
         onChange={eventChange}
         value={eventType}
       />
-      <SelectBox
+      <SelectOption
         type="status"
         style={{ width: 230 }}
         onChange={statusChange}

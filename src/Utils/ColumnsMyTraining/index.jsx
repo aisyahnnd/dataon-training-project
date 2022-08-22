@@ -1,15 +1,7 @@
 import { Rate } from "antd";
-import { Link } from "@/Components";
 import CoverDate from "@/Utils/CoverDate";
 
 export const columnsMyTraining = [
-  {
-    title: "EventName",
-    dataIndex: "eventName",
-    key: "eventName",
-    sorter: (a, b) => a.eventName.localeCompare(b.eventName),
-    render: (eventName) => <Link></Link>,
-  },
   {
     title: "EventName",
     dataIndex: "eventName",
