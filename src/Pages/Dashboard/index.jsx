@@ -6,8 +6,8 @@ import {
   AllTrainingEventTable,
   MyTrainingEventTable,
   AllTrainingEvent,
+  SectionHeader,
 } from "@/Components";
-import SectionHeader from "@/Components";
 
 const Dashboard = () => {
   const {

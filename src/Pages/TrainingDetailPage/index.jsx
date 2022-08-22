@@ -15,6 +15,7 @@ import {
   Space,
   Typography,
   Card,
+  Avatar,
 } from "antd";
 import { useContext, useEffect } from "react";
 import {
@@ -22,7 +23,7 @@ import {
   useParams,
   useLocation,
 } from "react-router-dom";
-import { Avatar, ButtonIcon, SectionHeader } from "@/Components";
+import { ButtonIcon, SectionHeader } from "@/Components";
 import { AppContext } from "@/Context/";
 import { useTranslation } from "react-i18next";
 import "./TrainingDetailPage.css";
@@ -124,59 +125,43 @@ const TrainingDetailPage = () => {
                       textButton={t(
                         "trainingCreateEditDetail.button.join"
                       )}
-                      style={{ borderRadius: 5, width: "100%" }}
+                      style={{
+                        borderRadius: 5,
+                        width: "100%",
+                        fontWeight: 700,
+                      }}
                       type={"primary"}
                     ></ButtonIcon>
                   </Col>
                 </Row>
-                <Row style={{ paddingTop: 20 }}>
-                  <Col span={12}>
-                    <div className="joinedTeamWrapper">
-                      <Text className="textJoined" strong>
-                        {t("trainingCreateEditDetail.joinedTeam")}
-                      </Text>
-                      <Avatar
-                        className="avatar"
-                        src={
-                          <Image
-                            style={{
-                              width: 32,
-                              height: 32,
-                            }}
-                            src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                          />
-                        }
-                      ></Avatar>
-                      <Avatar
-                        className="avatar"
-                        src={
-                          <Image
-                            style={{
-                              width: 32,
-                              height: 32,
-                            }}
-                            src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                          />
-                        }
-                      ></Avatar>
-                    </div>
+                <Row
+                  justify="space-between"
+                  style={{ paddingTop: "10px" }}
+                >
+                  <Col
+                    span={5}
+                    style={{ paddingTop: "10px", fontWeight: 700 }}
+                  >
+                    {t("trainingCreateEditDetail.joinedTeam")}
                   </Col>
                   <Col span={12}>
-                    <div className="inviteWrapper">
-                      <PlusOutlined
-                        style={{
-                          color: "#cccccc",
-                          paddingTop: "5px",
-                        }}
-                      ></PlusOutlined>
-                      <Text
-                        className="textInvite"
-                        strong
-                        type="secondary"
-                      >
-                        {t("trainingCreateEditDetail.button.invite")}
-                      </Text>
-                    </div>
+                    <Avatar.Group style={{ marginTop: "5px" }}>
+                      <Avatar src="https://iconape.com/wp-content/png_logo_vector/dataon-corporation.png" />
+                      <Avatar src="https://joeschmoe.io/api/v1/random" />
+                    </Avatar.Group>
+                  </Col>
+                  <Col span={7}>
+                    <Button
+                      style={{
+                        border: "none",
+                        color: "#959595",
+                        paddingTop: "10px",
+                        fontWeight: 700,
+                      }}
+                    >
+                      <PlusOutlined style={{ fontSize: "12px" }} />{" "}
+                      {t("trainingCreateEditDetail.button.invite")}
+                    </Button>
                   </Col>
                 </Row>
               </Card>

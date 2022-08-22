@@ -78,7 +78,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<ProtectedRoute tokenAvailable={token} />}>
-          <Route path="/(/|dashboard)/" element={<Dashboard />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route
             path="/training/:id"
             element={<TrainingDetailPage />}
@@ -105,7 +106,6 @@ const App = () => {
             path="/login"
             element={<LoginPage setToken={setToken} />}
           />
-          <Route path="/register" element={<RegisterPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

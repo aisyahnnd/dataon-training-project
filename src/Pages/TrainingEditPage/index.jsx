@@ -17,7 +17,7 @@ import {
 } from "react-router-dom";
 import { AppContext } from "@/Context";
 import { useTranslation } from "react-i18next";
-import SectionHeader from "@/Components";
+import { SectionHeader } from "@/Components";
 import dayjs from "dayjs";
 import moment from "moment";
 

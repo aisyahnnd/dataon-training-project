@@ -19,7 +19,6 @@ const SectionHeader = ({ viewButton }) => {
   const pathSnippets = location.pathname.split("/").filter((i) => i);
   const breadcrumbNameMaps = {
     "/": t("dashboard:dashboard"),
-    "/register": t("dashboard:breadcrumb.register"),
     "/training": t("dashboard:breadcrumb.training"),
     ["/training/" + params.id]: t(
       "dashboard:breadcrumb.trainingEvent"

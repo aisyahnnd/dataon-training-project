@@ -7,9 +7,7 @@
             "@/assets/*": ["./assets/*"],
             "@/Components/*": ["./Components/*"],
             "@/Context/*": ["./Context/*"],
-            "@/Dummy/*": ["./Dummy/*"],
             "@/Pages/*": ["./Pages/*"],
-            "@/Parts/*": ["./Parts/*"],
             "@/Utils/*": ["./Utils/*"],
           }
     },

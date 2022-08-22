@@ -2,6 +2,8 @@ import SectionHeader from "./SectionHeader";
 import FilterTrainingEvent from "./FilterTrainingEvent";
 import MyTrainingEvent from "./MyTrainingEvent";
 import MyTrainingEventTable from "./MyTrainingEventTable";
+import AllTrainingEvent from "./AllTrainingEvent";
+import AllTrainingEventTable from "./AllTrainingEventTable";
 import ButtonIcon from "./ButtonIcon";
 import LabelSection from "./LabelSection";
 import Notification from "./Notification";
@@ -16,6 +18,8 @@ export {
   FilterTrainingEvent,
   MyTrainingEvent,
   MyTrainingEventTable,
+  AllTrainingEvent,
+  AllTrainingEventTable,
   ButtonIcon,
   LabelSection,
   Notification,

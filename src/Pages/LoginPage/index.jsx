@@ -301,14 +301,6 @@ const LoginPage = ({ setToken }) => {
                   span: 24,
                 }}
               >
-                <Row>
-                  <Col span={24}>
-                    <p>
-                      {t("account.part1")}{" "}
-                      <Link to="/register">{t("account.part2")}</Link>
-                    </p>
-                  </Col>
-                </Row>
                 <Button
                   style={{ width: 100 }}
                   type="primary"

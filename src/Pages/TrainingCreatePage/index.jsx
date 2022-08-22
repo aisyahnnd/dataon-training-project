@@ -14,7 +14,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { AppContext } from "@/Context";
-import SectionHeader from "@/Components";
+import { SectionHeader } from "@/Components";
 
 const { RangePicker } = DatePicker;
 const { Option, OptGroup } = Select;
