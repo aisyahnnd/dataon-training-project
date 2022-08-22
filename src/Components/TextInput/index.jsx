@@ -1,6 +1,6 @@
 import { Input } from "antd";
-import "./TextInput.css";
 import PropTypes from "prop-types";
+import "./TextInput.css";
 
 const TextInput = ({
   id,

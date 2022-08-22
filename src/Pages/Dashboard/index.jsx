@@ -1,13 +1,13 @@
 import { useContext, useEffect } from "react";
-import { SectionHeader } from "@/Components";
 import { AppContext } from "@/Context";
 import {
   FilterTrainingEvent,
-  MyTrainingCard,
+  MyTrainingEvent,
   AllTrainingEventTable,
   MyTrainingEventTable,
   AllTrainingEvent,
-} from "@/Parts";
+} from "@/Components";
+import SectionHeader from "@/Components";
 
 const Dashboard = () => {
   const {
@@ -24,22 +24,26 @@ const Dashboard = () => {
     GetDataSelectEventType,
     GetDataSelectEventStatus,
   } = useContext(AppContext);
+
   useEffect(() => {
     GetDataSearching(valueInputSearching);
   }, [valueInputSearching, deleteStatus]);
+
   useEffect(() => {
     GetDataSelectEventType(eventType);
   }, [deleteStatus, eventType]);
+
   useEffect(() => {
     GetDataSelectEventStatus(eventStatus);
   }, [deleteStatus, eventStatus]);
+
   return (
     <>
       <SectionHeader viewButton></SectionHeader>
       <FilterTrainingEvent />
       {view ? (
         <>
-          <MyTrainingCard />
+          <MyTrainingEvent />
           <AllTrainingEvent item={DataAllTrainings} />
         </>
       ) : (

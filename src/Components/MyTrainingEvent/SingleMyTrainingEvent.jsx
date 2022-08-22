@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Image,
   Card,
@@ -12,7 +12,6 @@ import {
 import { EnvironmentOutlined, UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { Rate } from "antd";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Axios from "@/Utils/Axios";
 import PropTypes from "prop-types";

@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Badge, Col, Row, List } from "antd";
-import { SingleTrainingEvent } from "./SingleTrainingEvent";
-import { useContext } from "react";
 import { AppContext } from "@/Context/";
+import { useTranslation } from "react-i18next";
+import SingleAllTrainingEvent from "@/Components/AllTrainingEvent/SingleAllTrainingEvent";
 import InfiniteScroll from "react-infinite-scroll-component";
 import "./AllTrainingEvent.css";
-import { useTranslation } from "react-i18next";
 
 const AllTrainingEvent = () => {
   const { t } = useTranslation(["dashboard"]);
@@ -72,7 +71,10 @@ const AllTrainingEvent = () => {
               <List.Item>
                 <Row justify="center">
                   <Col>
-                    <SingleTrainingEvent id={item.id} item={item} />
+                    <SingleAllTrainingEvent
+                      id={item.id}
+                      item={item}
+                    />
                   </Col>
                 </Row>
               </List.Item>

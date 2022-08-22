@@ -14,12 +14,12 @@ import {
   Tooltip,
   Typography,
 } from "antd";
-import "./AllTrainingEvent.css";
 import { useTranslation } from "react-i18next";
+import "./AllTrainingEvent.css";
 
 const { Text } = Typography;
 
-export const SingleAllTrainingEvent = (props) => {
+const SingleAllTrainingEvent = (props) => {
   const { t } = useTranslation(["content"]);
   const { item, id } = props;
   const navigate = useNavigate();
@@ -117,3 +117,5 @@ export const SingleAllTrainingEvent = (props) => {
     </Tooltip>
   );
 };
+
+export default SingleAllTrainingEvent;

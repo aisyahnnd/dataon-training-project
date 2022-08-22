@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { UploadOutlined } from "@ant-design/icons";
 import {
   Form,
@@ -11,11 +11,10 @@ import {
   Row,
   Col,
 } from "antd";
-import { useNavigate, useLocation } from "react-router-dom";
-import { SectionHeader } from "@/Components";
-import { useContext } from "react";
-import { AppContext } from "@/Context";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { AppContext } from "@/Context";
+import SectionHeader from "@/Components";
 
 const { RangePicker } = DatePicker;
 const { Option, OptGroup } = Select;

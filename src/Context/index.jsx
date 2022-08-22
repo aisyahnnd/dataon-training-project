@@ -1,9 +1,8 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { columnsAllTraining } from "@/Utils/ColumnsAllTraining";
 import { columnsMyTraining } from "@/Utils/ColumnsMyTraining";
-import { useState } from "react";
 import { Notification } from "@/Components";
-import Axios from "@/Utils/Axios";
+import { Axios } from "@/Utils";
 
 export const AppContext = createContext(null);
 

@@ -1,5 +1,4 @@
-import LabelSection from "@/Components/LabelSection";
-import TableData from "@/Components/TableData";
+import { LabelSection, TableData } from "@/Components";
 import { useTranslation } from "react-i18next";
 
 const AllTrainingEventTable = ({ dataTable, columns }) => {

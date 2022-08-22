@@ -1,21 +1,21 @@
 import "./App.css";
-import { TrainingEditPage } from "@/Pages/TrainingEditPage/TrainingEditPage";
-import { TrainingDetailPage } from "@/Pages/TrainingDetailPage/TrainingDetailPage";
-import { TrainingCreatePage } from "@/Pages/TrainingCreatePage /TrainingCreatePage";
+import {
+  TrainingCreatePage,
+  TrainingDetailPage,
+  TrainingEditPage,
+  MissingPage,
+  LoginPage,
+  Dashboard,
+} from "./Pages";
+import Role from "@/Utils/Role";
+import Token from "@/Utils/Token";
 import {
   BrowserRouter,
   Routes,
   Route,
   useLocation,
 } from "react-router-dom";
-import { MissingPage } from "@/Pages/MissingPage/MissingPage";
-import { LoginPage } from "@/Pages/LoginPage/LoginPage";
-import { RegisterPage } from "@/Pages/RegisterPage/RegisterPage";
-import Dashboard from "@/Pages/Dashboard";
 import { Navigate, Outlet } from "react-router-dom";
-import Role from "@/Utils/Role";
-import Token from "@/Utils/Token";
-import Test from "./Pages/Test";
 import { Suspense } from "react";
 
 const setToken = (userToken) => {
@@ -100,7 +100,6 @@ const App = () => {
         </Route>
         <Route path="*" exact={true} element={<MissingPage />} />
         <Route path="/missing" element={<MissingPage />} />
-        <Route path="/test" element={<Test />} />
         <Route element={<ProtectedLogin tokenAvailable={token} />}>
           <Route
             path="/login"

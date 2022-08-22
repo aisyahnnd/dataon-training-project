@@ -12,20 +12,19 @@ import {
   Select,
   Input,
 } from "antd";
-import "./LoginPage.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Notification } from "@/Components";
+import { useTranslation } from "react-i18next";
 import Image1 from "@/assets/Images/example-3.svg";
 import Image2 from "@/assets/Images/example-25.svg";
 import Image3 from "@/assets/Images/example-29.svg";
 import Image4 from "@/assets/Images/example-30.svg";
 import Logo from "@/assets/Images/logo.png";
 import PropTypes from "prop-types";
-import { Notification } from "@/Components";
-import { useTranslation } from "react-i18next";
-import { useEffect } from "react";
 import i18next from "i18next";
+import "./LoginPage.css";
 
 const { Text } = Typography;
 

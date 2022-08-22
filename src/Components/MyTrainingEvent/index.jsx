@@ -1,9 +1,9 @@
 import { Badge, Carousel, Col, Row, Empty } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import { SingleMyTrainingEvent } from "./SingleMyTrainingEvent";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "@/Context";
 import { useTranslation } from "react-i18next";
+import SingleMyTrainingEvent from "./SingleMyTrainingEvent";
 import "./MyTrainingEvent.css";
 
 const MyTrainingEvent = () => {

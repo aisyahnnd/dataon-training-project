@@ -1,6 +1,6 @@
 import { Select } from "antd";
-import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
+import PropTypes from "prop-types";
 import "./SelectOption.css";
 
 const SelectOption = ({
