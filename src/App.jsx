@@ -78,8 +78,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<ProtectedRoute tokenAvailable={token} />}>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/(/|dashboard)/" element={<Dashboard />} />
           <Route
             path="/training/:id"
             element={<TrainingDetailPage />}

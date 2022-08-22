@@ -1,0 +1,21 @@
+.header {
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.ant-carousel .slick-dots li button {
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 10px !important;
+  background-color: rgb(41, 135, 243) !important;
+}
+
+.ant-carousel .slick-dots li.slick-active button {
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 100%;
+}
