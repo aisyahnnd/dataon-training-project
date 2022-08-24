@@ -2,7 +2,7 @@ import "./App.css";
 import {
   TrainingCreatePage,
   TrainingDetailPage,
-  TrainingEditPage,
+  TrainingCreateEditPage,
   MissingPage,
   LoginPage,
   Dashboard,
@@ -91,11 +91,11 @@ const App = () => {
           <Route element={<ProtectedAdmin roleAdmin={role} />}>
             <Route
               path="/training/create"
-              element={<TrainingCreatePage />}
+              element={<TrainingCreateEditPage />}
             />
             <Route
               path="/mytraining/edit/:id"
-              element={<TrainingEditPage />}
+              element={<TrainingCreateEditPage />}
             />
           </Route>
         </Route>

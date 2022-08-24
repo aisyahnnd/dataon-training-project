@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import SingleAllTrainingEvent from "@/Components/AllTrainingEvent/SingleAllTrainingEvent";
 import InfiniteScroll from "react-infinite-scroll-component";
 import "./AllTrainingEvent.css";
+import Loading from "../Loading";
 
 const AllTrainingEvent = () => {
   const { t } = useTranslation(["dashboard"]);
@@ -53,7 +54,11 @@ const AllTrainingEvent = () => {
           dataLength={item.length}
           next={AllTraining}
           hasMore={item.length >= data.length ? false : true}
-          loader={<h4 style={{ textAlign: "center" }}>Loading...</h4>}
+          loader={
+            <h4 style={{ textAlign: "center" }}>
+              <Loading />
+            </h4>
+          }
         >
           <List
             grid={{

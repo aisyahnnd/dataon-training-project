@@ -1,12 +1,15 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { columnsAllTraining } from "@/Utils/ColumnsAllTraining";
 import { columnsMyTraining } from "@/Utils/ColumnsMyTraining";
 import { Notification } from "@/Components";
 import { Axios } from "@/Utils";
+import { useTranslation } from "react-i18next";
+import dayjs from "dayjs";
 
 export const AppContext = createContext(null);
 
 export const ContextWrapper = (props) => {
+  const { t } = useTranslation(["content"]);
   const [AllTrainingTableColumnContext] = useState(
     columnsAllTraining
   );
@@ -32,7 +35,7 @@ export const ContextWrapper = (props) => {
   //for create data training
   const CreateDataTraining = async (data) => {
     try {
-      var messages = "Event successfully created";
+      var messages = t("trainingCreateEditDetail.messageCreate");
       const response = await Axios.post("/trainings", data);
       Notification(messages, "success");
     } catch (error) {
@@ -40,17 +43,84 @@ export const ContextWrapper = (props) => {
     }
   };
 
-  //for edit data my training
-  const EditDataTraining = async (dataEdit, paramsId, userId) => {
+  //for get data detail training
+  const [dataDetail, setDataDetail] = useState({});
+  const GetDataDetail = async (path, params) => {
     try {
-      var messages = "Event successfully Update";
+      if (path === "mytraining") {
+        const response = await Axios.get(
+          `/users/1/trainings/${params}`
+        );
+        console.log("bbb", response.data);
+        setDataDetail(response.data);
+      }
+      if (path === "training") {
+        const response = await Axios.get(`/trainings/${params}`);
+        setDataDetail(response.data);
+      }
+    } catch (error) {
+      console.log("error-message:", error);
+    }
+  };
+
+  //for edit data my training
+  const EditDataTraining = async (dataUpdate, paramsId) => {
+    try {
+      var messages = t("trainingCreateEditDetail.messageUpdate");
       const response = await Axios.put(
-        `users/${userId}/trainings/${paramsId}`,
-        dataEdit
+        `users/1/trainings/${paramsId}`,
+        dataUpdate
       );
       Notification(messages, "success");
     } catch (error) {
       Notification(error.message, "warn");
+    }
+  };
+
+  const [dataEdit, setDataEdit] = useState({
+    eventName: "",
+    startDate: "",
+    endDate: "",
+    image: "",
+    trainer: "",
+    location: {},
+    ratings: "",
+    isOnlineClass: "",
+    additionalInfo: "",
+    isComplete: "",
+    date: "",
+    userId: "",
+  });
+
+  const GetDataEdit = async (params) => {
+    try {
+      const response = await Axios.get(
+        `/users/1/trainings/${params}`
+      );
+      setDataEdit({
+        eventName: response.data.eventName,
+        startDate: dayjs(response.data.startDate).format(
+          "YYYY-MM-DD HH:mm"
+        ),
+        endDate: dayjs(response.data.endDate).format(
+          "YYYY-MM-DD HH:mm"
+        ),
+        image: response.data.thumbnail,
+        trainer: response.data.trainer,
+        location: {
+          lat: response.data.location.lat,
+          long: response.data.location.long,
+        },
+        ratings: response.data.ratings,
+        isOnlineClass:
+          location.isOnlineClass === true
+            ? t("trainingCreateEditDetail.eventType.option1")
+            : t("trainingCreateEditDetail.eventType.option2"),
+        additionalInfo: response.data.additionalInfo,
+        userId: response.data.userId,
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -181,6 +251,10 @@ export const ContextWrapper = (props) => {
         setEventType,
         GetDataSelectEventType,
         GetDataSelectEventStatus,
+        dataEdit,
+        GetDataEdit,
+        dataDetail,
+        GetDataDetail,
       }}
     >
       {props.children}

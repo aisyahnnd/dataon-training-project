@@ -3,7 +3,7 @@ import LoginPage from "./LoginPage";
 import MissingPage from "./MissingPage";
 import TrainingCreatePage from "./TrainingCreatePage";
 import TrainingDetailPage from "./TrainingDetailPage";
-import TrainingEditPage from "./TrainingEditPage";
+import TrainingCreateEditPage from "./TrainingCreateEditPage";
 
 export {
   Dashboard,
@@ -11,5 +11,5 @@ export {
   MissingPage,
   TrainingCreatePage,
   TrainingDetailPage,
-  TrainingEditPage,
+  TrainingCreateEditPage,
 };

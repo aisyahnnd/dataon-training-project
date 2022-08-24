@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import { useContext, useEffect } from "react";
 import { AppContext } from "@/Context";
 import {
@@ -5,9 +6,12 @@ import {
   MyTrainingEvent,
   AllTrainingEventTable,
   MyTrainingEventTable,
-  AllTrainingEvent,
   SectionHeader,
+  Loading,
 } from "@/Components";
+const AllTrainingEvent = React.lazy(() =>
+  import("@/Components/AllTrainingEvent/index.jsx")
+);
 
 const Dashboard = () => {
   const {
@@ -44,7 +48,9 @@ const Dashboard = () => {
       {view ? (
         <>
           <MyTrainingEvent />
-          <AllTrainingEvent item={DataAllTrainings} />
+          <Suspense fallback={<Loading />}>
+            <AllTrainingEvent item={DataAllTrainings} />
+          </Suspense>
         </>
       ) : (
         <>

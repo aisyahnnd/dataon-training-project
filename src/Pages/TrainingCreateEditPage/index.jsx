@@ -18,98 +18,87 @@ import {
 import { AppContext } from "@/Context";
 import { useTranslation } from "react-i18next";
 import { SectionHeader } from "@/Components";
-import dayjs from "dayjs";
 import moment from "moment";
 
 const { RangePicker } = DatePicker;
 
-const TrainingEditPage = () => {
+const TrainingCreateEditPage = () => {
+  const params = useParams();
   const { t } = useTranslation(["content"]);
-  const { EditDataTraining } = useContext(AppContext);
+  const {
+    EditDataTraining,
+    dataEdit,
+    GetDataEdit,
+    CreateDataTraining,
+  } = useContext(AppContext);
   const [componentSize, setComponentSize] = useState("default");
-  const [data, setData] = useState({
-    eventName: "",
-    startDate: "",
-    endDate: "",
-    image: "",
-    trainer: "",
-    location: "",
-    ratings: "",
-    isOnlineClass: "",
-    additionalInfo: "",
-    isComplete: "",
-    date: "",
-  });
   const [value, setValue] = useState("");
   const [form] = Form.useForm();
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
+  const pathSnippets = location.pathname.split("/").filter((i) => i);
+  const path = pathSnippets[0];
 
-  const getData = async () => {
-    try {
-      setData({
-        eventName: location.state.eventName,
-        startDate: dayjs(location.state.startDate).format(
-          "YYYY-MM-DD HH:mm"
-        ),
-        endDate: dayjs(location.state.endDate).format(
-          "YYYY-MM-DD HH:mm"
-        ),
-        image: location.state.thumbnail,
-        isOnlineClass:
-          location.isOnlineClass === true
-            ? t("trainingCreateEditDetail.eventType.option1")
-            : t("trainingCreateEditDetail.eventType.option2"),
-        location: location.state.trainer,
-        trainer: location.state.trainer,
-        ratings: location.state.ratings,
-        additionalInfo: location.state.additionalInfo,
-      });
-    } catch (error) {
-      navigate("/missing");
+  const handleBack = () => {
+    if (location.pathname === `/mytraining/edit/${params.id}`) {
+      navigate(`/mytraining/${params.id}`);
+    } else {
+      navigate("/");
     }
   };
 
   useEffect(() => {
-    getData();
-  }, []);
+    if (params.id) {
+      GetDataEdit(params.id);
+    }
+  }, [params, location]);
 
   form.setFieldsValue({
-    eventName: data.eventName,
-    date: [moment(data.startDate), moment(data.endDate)],
-    image: data.image,
-    isOnlineClass: data.isOnlineClass,
-    location: data.location,
-    trainer: data.trainer,
-    ratings: data.ratings,
-    additionalInfo: data.additionalInfo,
+    eventName: dataEdit.eventName,
+    date: [moment(dataEdit.startDate), moment(dataEdit.endDate)],
+    image: dataEdit.image,
+    isOnlineClass: dataEdit.isOnlineClass,
+    location: dataEdit.location,
+    trainer: dataEdit.trainer,
+    ratings: dataEdit.ratings,
+    additionalInfo: dataEdit.additionalInfo,
+    isComplete: dataEdit.isComplete,
   });
 
-  //update data to database
-  const params = useParams();
   const onFinish = (values) => {
-    var user = JSON.parse(localStorage.getItem("user-info"));
     const starDate = values.date[0].format("YYYY-MM-DD");
     const endDate = values.date[1].format("YYYY-MM-DD");
-    const dataEdit = {
+    const data = {
       eventName: values.eventName,
       isOnlineClass:
         values.isOnlineClass ===
         t("trainingCreateEditDetail.eventType.option1")
-          ? true
-          : false,
+          ? "true"
+          : "false",
       startDate: starDate,
       endDate: endDate,
       location: { lat: values.latitude, long: values.longitude },
-      isComplete: values.isComplete,
+      isComplete:
+        values.isComplete ===
+        t("trainingCreateEditDetail.status.radio1")
+          ? "true"
+          : "false",
       trainer: values.trainer,
       additionalInfo: values.additionalInfo,
       ratings: values.ratings,
     };
-    EditDataTraining(dataEdit, params.id, user.id);
+    if (location.pathname === `/mytraining/edit/${params.id}`) {
+      EditDataTraining(data, params.id);
+      navigate(`/mytraining/${params.id}`);
+    }
+    if (location.pathname === "/training/create") {
+      CreateDataTraining(data);
+      form.resetFields();
+      navigate("/");
+    }
   };
 
   const onChangeRatings = (value) => {
@@ -137,12 +126,17 @@ const TrainingEditPage = () => {
           }}
           onValuesChange={onFormLayoutChange}
           size={componentSize}
-          form={form}
+          form={params.id ? form : form.resetFields()}
           style={{ paddingTop: 50 }}
         >
           <Form.Item
             name="isOnlineClass"
             label={t("trainingCreateEditDetail.eventType.label")}
+            value={
+              dataEdit.isOnlineClass === "true"
+                ? t("trainingCreateEditDetail.eventType.option1")
+                : t("trainingCreateEditDetail.eventType.option2")
+            }
             rules={[
               {
                 required: true,
@@ -153,12 +147,21 @@ const TrainingEditPage = () => {
               placeholder={t(
                 "trainingCreateEditDetail.eventType.placeholder"
               )}
-              value={data.isOnlineClass}
             >
-              <Select.Option name="true" value="Online Class">
+              <Select.Option
+                name="isOnlineClass"
+                value={t(
+                  "trainingCreateEditDetail.eventType.option1"
+                )}
+              >
                 {t("trainingCreateEditDetail.eventType.option1")}
               </Select.Option>
-              <Select.Option name="false" value="Offline Class">
+              <Select.Option
+                name="isOnlineClass"
+                value={t(
+                  "trainingCreateEditDetail.eventType.option2"
+                )}
+              >
                 {t("trainingCreateEditDetail.eventType.option2")}
               </Select.Option>
             </Select>
@@ -166,43 +169,39 @@ const TrainingEditPage = () => {
           <Form.Item
             name="eventName"
             label={t("trainingCreateEditDetail.eventName.label")}
-            value={data.eventName}
+            value={dataEdit.eventName}
             rules={[
               {
                 required: true,
               },
             ]}
           >
-            <Input />
+            <Input
+              placeholder={t(
+                "trainingCreateEditDetail.eventName.placeholder"
+              )}
+            />
           </Form.Item>
           <Form.Item
             name="trainer"
             label={t("trainingCreateEditDetail.trainer.label")}
-            value={data.trainer}
+            value={dataEdit.trainer}
             rules={[
               {
                 required: true,
               },
             ]}
           >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name="location"
-            label={t("trainingCreateEditDetail.location")}
-            value={data.location}
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input />
+            <Input
+              placeholder={t(
+                "trainingCreateEditDetail.trainer.placeholder"
+              )}
+            />
           </Form.Item>
           <Form.Item
             name="date"
             label={t("trainingCreateEditDetail.date")}
-            value={data.date}
+            value={dataEdit.date}
             rules={[
               {
                 required: true,
@@ -210,14 +209,7 @@ const TrainingEditPage = () => {
               },
             ]}
           >
-            <RangePicker
-              format="YYYY-MM-DD HH:mm"
-              defaultPickerValue={[
-                moment(data.startDate),
-                moment(data.endDate),
-              ]}
-              showTime
-            />
+            <RangePicker format="YYYY-MM-DD HH:mm" showTime />
           </Form.Item>
           <Form.Item
             name="isComplete"
@@ -229,11 +221,23 @@ const TrainingEditPage = () => {
               },
             ]}
           >
-            <Radio.Group value={value}>
-              <Radio.Button value={false}>
+            <Radio.Group
+              defaultValue={
+                dataEdit.isComplete === "true"
+                  ? t("trainingCreateEditDetail.status.radio1")
+                  : t("trainingCreateEditDetail.status.radio2")
+              }
+            >
+              <Radio.Button
+                name="isComplete"
+                value={t("trainingCreateEditDetail.status.radio1")}
+              >
                 {t("trainingCreateEditDetail.status.radio1")}
               </Radio.Button>
-              <Radio.Button value={true}>
+              <Radio.Button
+                name="isComplete"
+                value={t("trainingCreateEditDetail.status.radio2")}
+              >
                 {t("trainingCreateEditDetail.status.radio2")}
               </Radio.Button>
             </Radio.Group>
@@ -241,43 +245,53 @@ const TrainingEditPage = () => {
           <Form.Item
             name="ratings"
             label={t("trainingTable.title5")}
-            value={data.ratings}
+            value={dataEdit.ratings}
           >
             <InputNumber
               min={1}
               onChange={(value) => onChangeRatings(value)}
               max={100}
               type="number"
+              placeholder={t("trainingTable.title5")}
             />
           </Form.Item>
-          <Form.Item label={t("trainingCreateEditDetail.location")}>
+          <Form.Item
+            name="location"
+            label={t("trainingCreateEditDetail.location")}
+          >
             <Form.Item
               name="latitude"
+              value={dataEdit.location.lat}
               rules={[
                 {
                   required: true,
                 },
               ]}
             >
-              <Input name="latitude" placeholder="latitude" />
+              <Input placeholder="Latitude" />
             </Form.Item>
             <Form.Item
               name="longitude"
+              value={dataEdit.location.long}
               rules={[
                 {
                   required: true,
                 },
               ]}
             >
-              <Input placeholder="longitude" />
+              <Input placeholder="Longitude" />
             </Form.Item>
           </Form.Item>
           <Form.Item
             name="additionalInfo"
             label={t("trainingCreateEditDetail.information.label")}
-            value={data.additionalInfo}
+            value={dataEdit.additionalInfo}
           >
-            <Input />
+            <Input
+              placeholder={t(
+                "trainingCreateEditDetail.information.placeholder"
+              )}
+            />
           </Form.Item>
           <Row style={{ paddingTop: 100 }}>
             <Col
@@ -288,6 +302,18 @@ const TrainingEditPage = () => {
                 borderTop: "1px #dddddd solid",
               }}
             >
+              <Button
+                onClick={handleBack}
+                type="secondary"
+                htmlType="submit"
+                style={{
+                  borderRadius: 5,
+                  width: 100,
+                  marginRight: 10,
+                }}
+              >
+                {t("trainingCreateEditDetail.button.back")}
+              </Button>
               <Button
                 type="primary"
                 htmlType="submit"
@@ -303,4 +329,4 @@ const TrainingEditPage = () => {
   );
 };
 
-export default TrainingEditPage;
+export default TrainingCreateEditPage;

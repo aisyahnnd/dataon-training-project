@@ -84,7 +84,9 @@
     "overview": "Ringkasan",
     "person": " Orang",
     "instructor": "Pengajar",
-    "resources": "Sumber daya"
+    "resources": "Sumber daya",
+    "messageUpdate": "Acara Berhasil Diperbarui",
+    "messageCreate": "Acara Berhasil Dibuat"
   },
   "deleteConfirm": {
     "title": "Apakah Anda yakin akan menghapus pelatihan ini?",

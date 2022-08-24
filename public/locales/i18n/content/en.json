@@ -84,7 +84,9 @@
     "overview": "Overview",
     "person": " Person",
     "instructor": "Instructor",
-    "resources": "Resources"
+    "resources": "Resources",
+    "messageUpdate": "Event Successfully Updated",
+    "messageCreate": "Event Successfully Created"
   },
   "deleteConfirm": {
     "title": "Are you sure to delete this training?",

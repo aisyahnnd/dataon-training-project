@@ -12,6 +12,7 @@ import SelectOption from "./SelectOption";
 import TableData from "./TableData";
 import TextInput from "./TextInput";
 import Toggle from "./Toggle";
+import Loading from "./Loading";
 
 export {
   SectionHeader,
@@ -28,4 +29,5 @@ export {
   TableData,
   TextInput,
   Toggle,
+  Loading,
 };

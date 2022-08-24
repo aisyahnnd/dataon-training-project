@@ -24,7 +24,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { ButtonIcon, SectionHeader } from "@/Components";
-import { AppContext } from "@/Context/";
+import { AppContext } from "@/Context";
 import { useTranslation } from "react-i18next";
 import "./TrainingDetailPage.css";
 
@@ -33,22 +33,38 @@ const { Text, Title } = Typography;
 
 const TrainingDetailPage = () => {
   const { t } = useTranslation(["content"]);
-  const { deleteStatus, setDeleteStatus, DeleteDataMyTraining } =
-    useContext(AppContext);
+  const {
+    deleteStatus,
+    setDeleteStatus,
+    DeleteDataMyTraining,
+    dataDetail,
+    GetDataDetail,
+  } = useContext(AppContext);
   const navigate = useNavigate();
   const location = useLocation();
   const params = useParams();
   let user = JSON.parse(localStorage.getItem("user-info"));
+  const pathSnippets = location.pathname.split("/").filter((i) => i);
+  const path = pathSnippets[0];
+  console.log(99, path);
 
   const handleEdit = () => {
-    navigate(`/mytraining/edit/${params.id}`, {
-      state: location.state,
-    });
+    navigate(`/mytraining/edit/${params.id}`);
   };
 
   const handleBack = () => {
     navigate("/");
   };
+
+  useEffect(() => {
+    if (path === "mytraining") {
+      GetDataDetail(path, params.id);
+      console.log(dataDetail);
+    }
+    if (path === "training") {
+      GetDataDetail(path, params.id);
+    }
+  }, [params, location, dataDetail]);
 
   useEffect(() => {
     if (deleteStatus) {
@@ -86,7 +102,7 @@ const TrainingDetailPage = () => {
             <Col span={24}>
               <Row>
                 <Title strong level={2}>
-                  {location.state.eventName}
+                  {dataDetail.eventName}
                 </Title>
               </Row>
               <Row>
@@ -108,7 +124,7 @@ const TrainingDetailPage = () => {
                   borderRadius: "20px",
                   height: 250,
                 }}
-                src={location.state.thumbnail}
+                src={dataDetail.thumbnail}
               />
               <Card
                 style={{
@@ -144,18 +160,18 @@ const TrainingDetailPage = () => {
                   >
                     {t("trainingCreateEditDetail.joinedTeam")}
                   </Col>
-                  <Col span={12}>
+                  <Col span={10}>
                     <Avatar.Group style={{ marginTop: "5px" }}>
                       <Avatar src="https://iconape.com/wp-content/png_logo_vector/dataon-corporation.png" />
                       <Avatar src="https://joeschmoe.io/api/v1/random" />
                     </Avatar.Group>
                   </Col>
-                  <Col span={7}>
+                  <Col span={8}>
                     <Button
                       style={{
                         border: "none",
                         color: "#959595",
-                        paddingTop: "10px",
+                        marginTop: "10px",
                         fontWeight: 700,
                       }}
                     >
@@ -178,11 +194,11 @@ const TrainingDetailPage = () => {
                     {t("trainingCreateEditDetail.overview")}
                   </Text>
                   <Text style={{ fontSize: "14px", fontWeight: 700 }}>
-                    <CalendarOutlined /> {location.state.startDate}
+                    <CalendarOutlined /> {dataDetail.startDate}
                     <InfoCircleOutlined
                       style={{ marginLeft: 20, marginRight: 5 }}
                     />
-                    {location.state.isOnlineClass === true
+                    {dataDetail.isOnlineClass === true
                       ? t(
                           "trainingCreateEditDetail.eventType.option1"
                         )
@@ -210,7 +226,7 @@ const TrainingDetailPage = () => {
                       <Text
                         style={{ fontWeight: 700, paddingLeft: 10 }}
                       >
-                        {location.state.trainer}
+                        {dataDetail.trainer}
                       </Text>
                       <Text
                         style={{
@@ -219,7 +235,7 @@ const TrainingDetailPage = () => {
                           color: "#8e8e8e",
                         }}
                       >
-                        {location.state.additionalInfo}
+                        {dataDetail.additionalInfo}
                       </Text>
                     </Space>
                   </div>
@@ -257,7 +273,7 @@ const TrainingDetailPage = () => {
                         <SolutionOutlined
                           style={{ marginRight: 5 }}
                         />
-                        {location.state.isOnlineClass === true
+                        {dataDetail.isOnlineClass === "true"
                           ? t(
                               "trainingCreateEditDetail.eventType.option1"
                             )
@@ -293,7 +309,7 @@ const TrainingDetailPage = () => {
                           color: "#8e8e8e",
                         }}
                       >
-                        {location.state.startDate}
+                        {dataDetail.startDate}
                       </Text>
                       <Text
                         style={{ fontSize: "14px", fontWeight: 700 }}
@@ -306,7 +322,7 @@ const TrainingDetailPage = () => {
                           color: "#8e8e8e",
                         }}
                       >
-                        {location.state.trainer}
+                        {dataDetail.trainer}
                       </Text>
                       <Text
                         style={{ fontSize: "14px", fontWeight: 700 }}
@@ -319,12 +335,12 @@ const TrainingDetailPage = () => {
                           color: "#8e8e8e",
                         }}
                       >
-                        {location.state.isComplete === true
+                        {dataDetail.isComplete === "true"
                           ? t(
-                              "trainingCreateEditDetail.status.radio2"
+                              "trainingCreateEditDetail.status.radio1"
                             )
                           : t(
-                              "trainingCreateEditDetail.status.radio1"
+                              "trainingCreateEditDetail.status.radio2"
                             )}
                       </Text>
                       <Text
@@ -338,7 +354,7 @@ const TrainingDetailPage = () => {
                           color: "#8e8e8e",
                         }}
                       >
-                        {location.state.endDate}
+                        {dataDetail.endDate}
                       </Text>
                       <Text
                         style={{ fontSize: "14px", fontWeight: 700 }}
@@ -351,7 +367,7 @@ const TrainingDetailPage = () => {
                           color: "#8e8e8e",
                         }}
                       >
-                        {location.state.trainer}
+                        {dataDetail.trainer}
                       </Text>
                     </Space>
                   </Card>
