@@ -30,6 +30,8 @@ const TrainingCreateEditPage = () => {
     dataEdit,
     GetDataEdit,
     CreateDataTraining,
+    createStatus,
+    setCreateStatus,
   } = useContext(AppContext);
   const [componentSize, setComponentSize] = useState("default");
   const [value, setValue] = useState("");
@@ -41,20 +43,27 @@ const TrainingCreateEditPage = () => {
   };
   const pathSnippets = location.pathname.split("/").filter((i) => i);
   const path = pathSnippets[0];
+  const loc = location.pathname;
 
   const handleBack = () => {
-    if (location.pathname === `/mytraining/edit/${params.id}`) {
-      navigate(`/mytraining/${params.id}`);
-    } else {
-      navigate("/");
-    }
+    if (path === "mytraining") navigate(`/mytraining/${params.id}`);
+    if (loc === `/training/edit/${params.id}`)
+      navigate(`/training/${params.id}`);
+    if (loc === "/training/create") navigate("/");
   };
 
   useEffect(() => {
     if (params.id) {
-      GetDataEdit(params.id);
+      GetDataEdit(path, loc, params.id);
     }
   }, [params, location]);
+
+  useEffect(() => {
+    if (createStatus) {
+      navigate("/");
+      setCreateStatus(false);
+    }
+  }, [createStatus]);
 
   form.setFieldsValue({
     eventName: dataEdit.eventName,
@@ -90,14 +99,17 @@ const TrainingCreateEditPage = () => {
       additionalInfo: values.additionalInfo,
       ratings: values.ratings,
     };
-    if (location.pathname === `/mytraining/edit/${params.id}`) {
-      EditDataTraining(data, params.id);
+
+    if (path === "mytraining") {
+      EditDataTraining(path, loc, data, params.id);
       navigate(`/mytraining/${params.id}`);
     }
-    if (location.pathname === "/training/create") {
+    if (loc === `/training/edit/${params.id}`) {
+      EditDataTraining(path, loc, data, params.id);
+      navigate(`/training/${params.id}`);
+    }
+    if (loc === "/training/create") {
       CreateDataTraining(data);
-      form.resetFields();
-      navigate("/");
     }
   };
 
@@ -109,7 +121,7 @@ const TrainingCreateEditPage = () => {
 
   return (
     <>
-      <SectionHeader></SectionHeader>
+      <SectionHeader />
       <div className="site-card-wrapper">
         <Form
           data-testid="form"

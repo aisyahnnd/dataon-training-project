@@ -4,8 +4,8 @@ import { AppContext } from "@/Context/";
 import { useTranslation } from "react-i18next";
 import SingleAllTrainingEvent from "@/Components/AllTrainingEvent/SingleAllTrainingEvent";
 import InfiniteScroll from "react-infinite-scroll-component";
-import "./AllTrainingEvent.css";
 import Loading from "../Loading";
+import "./AllTrainingEvent.css";
 
 const AllTrainingEvent = () => {
   const { t } = useTranslation(["dashboard"]);
@@ -28,7 +28,9 @@ const AllTrainingEvent = () => {
 
   const AllTraining = () => {
     setTimeout(() => {
-      setItem(item.concat(Array.from({ length: x.matches ? 4 : 5 })));
+      setItem(
+        item.concat(Array.from({ length: x.matches ? 8 : 10 }))
+      );
     }, 1500);
   };
 

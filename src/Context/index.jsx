@@ -33,14 +33,17 @@ export const ContextWrapper = (props) => {
   };
 
   //for create data training
+  const [createStatus, setCreateStatus] = useState(false);
   const CreateDataTraining = async (data) => {
-    try {
-      var messages = t("trainingCreateEditDetail.messageCreate");
-      const response = await Axios.post("/trainings", data);
-      Notification(messages, "success");
-    } catch (error) {
-      Notification(error.message, "warn");
-    }
+    var messages = t("trainingCreateEditDetail.messageCreate");
+    await Axios.post("/trainings", data)
+      .then((res) => {
+        setCreateStatus(true);
+        Notification(messages, "success");
+      })
+      .catch((error) => {
+        Notification(error.message, "warn");
+      });
   };
 
   //for get data detail training
@@ -51,7 +54,6 @@ export const ContextWrapper = (props) => {
         const response = await Axios.get(
           `/users/1/trainings/${params}`
         );
-        console.log("bbb", response.data);
         setDataDetail(response.data);
       }
       if (path === "training") {
@@ -63,14 +65,21 @@ export const ContextWrapper = (props) => {
     }
   };
 
-  //for edit data my training
-  const EditDataTraining = async (dataUpdate, paramsId) => {
+  //for edit data training
+  const EditDataTraining = async (
+    path,
+    loc,
+    dataUpdate,
+    paramsId
+  ) => {
     try {
       var messages = t("trainingCreateEditDetail.messageUpdate");
-      const response = await Axios.put(
-        `users/1/trainings/${paramsId}`,
-        dataUpdate
-      );
+      if (path === "mytraining") {
+        await Axios.put(`users/1/trainings/${paramsId}`, dataUpdate);
+      }
+      if (loc === `/training/edit/${paramsId}`) {
+        await Axios.put(`trainings/${paramsId}`, dataUpdate);
+      }
       Notification(messages, "success");
     } catch (error) {
       Notification(error.message, "warn");
@@ -92,33 +101,60 @@ export const ContextWrapper = (props) => {
     userId: "",
   });
 
-  const GetDataEdit = async (params) => {
+  const GetDataEdit = async (path, loc, params) => {
     try {
-      const response = await Axios.get(
-        `/users/1/trainings/${params}`
-      );
-      setDataEdit({
-        eventName: response.data.eventName,
-        startDate: dayjs(response.data.startDate).format(
-          "YYYY-MM-DD HH:mm"
-        ),
-        endDate: dayjs(response.data.endDate).format(
-          "YYYY-MM-DD HH:mm"
-        ),
-        image: response.data.thumbnail,
-        trainer: response.data.trainer,
-        location: {
-          lat: response.data.location.lat,
-          long: response.data.location.long,
-        },
-        ratings: response.data.ratings,
-        isOnlineClass:
-          location.isOnlineClass === true
-            ? t("trainingCreateEditDetail.eventType.option1")
-            : t("trainingCreateEditDetail.eventType.option2"),
-        additionalInfo: response.data.additionalInfo,
-        userId: response.data.userId,
-      });
+      if (path === "mytraining") {
+        const response = await Axios.get(
+          `/users/1/trainings/${params}`
+        );
+        setDataEdit({
+          eventName: response.data.eventName,
+          startDate: dayjs(response.data.startDate).format(
+            "YYYY-MM-DD HH:mm"
+          ),
+          endDate: dayjs(response.data.endDate).format(
+            "YYYY-MM-DD HH:mm"
+          ),
+          image: response.data.thumbnail,
+          trainer: response.data.trainer,
+          location: {
+            lat: response.data.location.lat,
+            long: response.data.location.long,
+          },
+          ratings: response.data.ratings,
+          isOnlineClass:
+            location.isOnlineClass === true
+              ? t("trainingCreateEditDetail.eventType.option1")
+              : t("trainingCreateEditDetail.eventType.option2"),
+          additionalInfo: response.data.additionalInfo,
+          userId: response.data.userId,
+        });
+      }
+      if (loc === `/training/edit/${params}`) {
+        const response = await Axios.get(`/trainings/${params}`);
+        setDataEdit({
+          eventName: response.data.eventName,
+          startDate: dayjs(response.data.startDate).format(
+            "YYYY-MM-DD HH:mm"
+          ),
+          endDate: dayjs(response.data.endDate).format(
+            "YYYY-MM-DD HH:mm"
+          ),
+          image: response.data.thumbnail,
+          trainer: response.data.trainer,
+          location: {
+            lat: response.data.location.lat,
+            long: response.data.location.long,
+          },
+          ratings: response.data.ratings,
+          isOnlineClass:
+            location.isOnlineClass === true
+              ? t("trainingCreateEditDetail.eventType.option1")
+              : t("trainingCreateEditDetail.eventType.option2"),
+          additionalInfo: response.data.additionalInfo,
+          userId: response.data.userId,
+        });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -177,17 +213,27 @@ export const ContextWrapper = (props) => {
     );
   };
 
-  //for delete data my training
+  //for delete data training
   const [deleteStatus, setDeleteStatus] = useState(false);
-  const DeleteDataMyTraining = async (id) => {
-    await Axios.delete(`/users/1/trainings/${id}`)
-      .then((res) => {
-        console.log(res.data);
-        setDeleteStatus(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const DeleteDataMyTraining = async (path, id) => {
+    if (path === "mytraining") {
+      await Axios.delete(`/users/1/trainings/${id}`)
+        .then((res) => {
+          setDeleteStatus(true);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    if (path === "training") {
+      await Axios.delete(`/trainings/${id}`)
+        .then((res) => {
+          setDeleteStatus(true);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   //for search card training
@@ -255,6 +301,8 @@ export const ContextWrapper = (props) => {
         GetDataEdit,
         dataDetail,
         GetDataDetail,
+        createStatus,
+        setCreateStatus,
       }}
     >
       {props.children}

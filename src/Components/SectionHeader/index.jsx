@@ -1,4 +1,8 @@
-import { MoreOutlined, PlusOutlined } from "@ant-design/icons";
+import {
+  EditOutlined,
+  MoreOutlined,
+  PlusOutlined,
+} from "@ant-design/icons";
 import { Breadcrumb, Button, Col, Dropdown, Menu, Row } from "antd";
 import { useTranslation } from "react-i18next";
 import {
@@ -8,8 +12,8 @@ import {
   useParams,
 } from "react-router-dom";
 
-const SectionHeader = ({ viewButton }) => {
-  const { t } = useTranslation(["common", "dashboard"]);
+const SectionHeader = ({ viewButton, editButton }) => {
+  const { t } = useTranslation(["common", "dashboard", "content"]);
   const navigate = useNavigate();
   const params = useParams();
   const location = useLocation();
@@ -17,6 +21,7 @@ const SectionHeader = ({ viewButton }) => {
 
   //breadcumb
   const pathSnippets = location.pathname.split("/").filter((i) => i);
+  const path = pathSnippets[0];
   const breadcrumbNameMaps = {
     "/": t("dashboard:dashboard"),
     "/training": t("dashboard:breadcrumb.training"),
@@ -24,6 +29,10 @@ const SectionHeader = ({ viewButton }) => {
       "dashboard:breadcrumb.trainingEvent"
     ),
     "/training/create": t("dashboard:breadcrumb.trainingCreate"),
+    "/training/edit": t("dashboard:breadcrumb.mytrainingEdit"),
+    ["/training/edit/" + params.id]: t(
+      "dashboard:breadcrumb.mytrainingEditDetail"
+    ),
     ["/mytraining/" + params.id]: t(
       "dashboard:breadcrumb.mytrainingDetail"
     ),
@@ -61,6 +70,15 @@ const SectionHeader = ({ viewButton }) => {
 
   const handleCreate = () => {
     navigate("/training/create");
+  };
+
+  const handleEdit = () => {
+    if (path === "mytraining") {
+      navigate(`/mytraining/edit/${params.id}`);
+    }
+    if (path === "training") {
+      navigate(`/training/edit/${params.id}`);
+    }
   };
 
   const menuLogout = (
@@ -107,6 +125,24 @@ const SectionHeader = ({ viewButton }) => {
             padding: 0,
           }}
         >
+          {editButton && (
+            <>
+              {user.role === "admin" ? (
+                <Button
+                  onClick={handleEdit}
+                  htmlType="submit"
+                  style={{
+                    borderRadius: 5,
+                    fontWeight: "bold",
+                    marginRight: "10px",
+                  }}
+                >
+                  <EditOutlined />{" "}
+                  {t("content:trainingCreateEditDetail.button.edit")}
+                </Button>
+              ) : null}
+            </>
+          )}
           {viewButton && (
             <>
               {user.role === "admin" ? (

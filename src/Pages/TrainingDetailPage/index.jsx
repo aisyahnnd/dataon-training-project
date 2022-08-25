@@ -46,11 +46,6 @@ const TrainingDetailPage = () => {
   let user = JSON.parse(localStorage.getItem("user-info"));
   const pathSnippets = location.pathname.split("/").filter((i) => i);
   const path = pathSnippets[0];
-  console.log(99, path);
-
-  const handleEdit = () => {
-    navigate(`/mytraining/edit/${params.id}`);
-  };
 
   const handleBack = () => {
     navigate("/");
@@ -84,7 +79,10 @@ const TrainingDetailPage = () => {
 
       onOk() {
         return new Promise((resolve, reject) => {
-          DeleteDataMyTraining(params.id);
+          if (path === "mytraining")
+            DeleteDataMyTraining(path, params.id);
+          if (path === "training")
+            DeleteDataMyTraining(path, params.id);
           setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
         }).catch(() => console.log("Oops errors!"));
       },
@@ -95,7 +93,7 @@ const TrainingDetailPage = () => {
 
   return (
     <>
-      <SectionHeader></SectionHeader>
+      <SectionHeader viewButton={false} editButton />
       <div className="container-grid">
         <div className="content">
           <Row>
@@ -198,7 +196,7 @@ const TrainingDetailPage = () => {
                     <InfoCircleOutlined
                       style={{ marginLeft: 20, marginRight: 5 }}
                     />
-                    {dataDetail.isOnlineClass === true
+                    {dataDetail.isOnlineClass === "true"
                       ? t(
                           "trainingCreateEditDetail.eventType.option1"
                         )
@@ -397,21 +395,8 @@ const TrainingDetailPage = () => {
             >
               {t("trainingCreateEditDetail.button.back")}
             </Button>
-            {location.pathname === `/mytraining/${params.id}` &&
-            user.role === "admin" ? (
+            {user.role === "admin" ? (
               <>
-                <Button
-                  onClick={handleEdit}
-                  type="primary"
-                  htmlType="submit"
-                  style={{
-                    borderRadius: 5,
-                    width: 100,
-                    marginRight: 10,
-                  }}
-                >
-                  {t("trainingCreateEditDetail.button.edit")}
-                </Button>
                 <Button
                   onClick={showDeleteConfirm}
                   type="primary"
