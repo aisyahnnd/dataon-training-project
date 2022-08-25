@@ -67,7 +67,7 @@ const SingleAllTrainingEvent = (props) => {
         key={id}
         style={{
           maxWidth: 400,
-          height: 350,
+          height: 400,
           borderRadius: 10,
           margin: "0px auto",
         }}
@@ -81,7 +81,7 @@ const SingleAllTrainingEvent = (props) => {
         hoverable
       >
         <Row justify="space-between">
-          <Col>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <Space
               direction="vertical"
               size={1}
@@ -97,7 +97,7 @@ const SingleAllTrainingEvent = (props) => {
           </Col>
         </Row>
         <Row justify="space-between">
-          <Col>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <Space
               direction="vertical"
               size={1}

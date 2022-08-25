@@ -8,8 +8,7 @@ import "./MyTrainingEvent.css";
 
 const MyTrainingEvent = () => {
   const { t } = useTranslation(["dashboard"]);
-  const { DataMyTraining, valueCardTraining } =
-    useContext(AppContext);
+  const { DataMyTraining } = useContext(AppContext);
   const [data, setData] = useState([]);
 
   const getData = async () => {

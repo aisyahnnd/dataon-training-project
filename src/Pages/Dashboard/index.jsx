@@ -16,22 +16,22 @@ const AllTrainingEvent = React.lazy(() =>
 const Dashboard = () => {
   const {
     view,
-    valueInputSearching,
-    GetDataSearching,
     DataAllTrainings,
+    DataMyTraining,
     AllTrainingTableColumnContext,
     MyTrainingTableColumnContext,
-    DataMyTraining,
     deleteStatus,
     eventType,
     eventStatus,
     GetDataSelectEventType,
     GetDataSelectEventStatus,
+    GetSearchTraining,
+    valueSearchTraining,
   } = useContext(AppContext);
 
   useEffect(() => {
-    GetDataSearching(valueInputSearching);
-  }, [valueInputSearching, deleteStatus]);
+    GetSearchTraining(valueSearchTraining);
+  }, [valueSearchTraining, deleteStatus]);
 
   useEffect(() => {
     GetDataSelectEventType(eventType);
@@ -55,7 +55,7 @@ const Dashboard = () => {
       ) : (
         <>
           <MyTrainingEventTable
-            dataTable={DataMyTraining}
+            dataTable={DataMyTraining.data}
             columns={MyTrainingTableColumnContext}
           />
           <AllTrainingEventTable

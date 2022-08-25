@@ -1,4 +1,5 @@
 import { Rate } from "antd";
+import { LinkEvent } from "@/Components";
 import CoverDate from "@/Utils/CoverDate";
 
 export const columnsMyTraining = [
@@ -7,12 +8,18 @@ export const columnsMyTraining = [
     dataIndex: "eventName",
     key: "eventName",
     sorter: (a, b) => a.eventName.localeCompare(b.eventName),
+    render: (eventName, item) => (
+      <LinkEvent
+        title={eventName}
+        id={item.id}
+        userId={item.userId}
+      />
+    ),
   },
   {
     title: "Training Type",
     dataIndex: "isOnline",
     key: "eventType",
-
     render: (text) => {
       return <span>{text ? "Online Class" : "Offline Class"}</span>;
     },

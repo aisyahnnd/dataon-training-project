@@ -14,13 +14,9 @@ import {
 } from "antd";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { Notification } from "@/Components";
 import { useTranslation } from "react-i18next";
-import Image1 from "@/assets/Images/example-3.svg";
-import Image2 from "@/assets/Images/example-25.svg";
-import Image3 from "@/assets/Images/example-29.svg";
-import Image4 from "@/assets/Images/example-30.svg";
+import { Image1, Image2, Image3, Image4 } from "@/assets/Images";
 import Logo from "@/assets/Images/logo.png";
 import PropTypes from "prop-types";
 import i18next from "i18next";
@@ -135,8 +131,11 @@ const LoginPage = ({ setToken }) => {
             }}
           >
             <Select
-              defaultValue="English (EN)"
-              // value={localStorage.getItem("i18nextLng")}
+              defaultValue={
+                localStorage.getItem("i18nextLng") === "en"
+                  ? "English (EN)"
+                  : "Indonesia (IDN)"
+              }
               style={{
                 width: 150,
               }}
@@ -156,8 +155,8 @@ const LoginPage = ({ setToken }) => {
             <Carousel
               style={{
                 justifyContent: "center",
-                paddingTop: 100,
-                paddingLeft: 100,
+                paddingTop: 80,
+                paddingLeft: 180,
               }}
               autoplay
               data-testid="carousel-login"
@@ -165,7 +164,7 @@ const LoginPage = ({ setToken }) => {
               <div>
                 <img
                   style={{
-                    width: "500px",
+                    width: "400px",
                     justifyContent: "center",
                   }}
                   alt="side-1"
@@ -174,21 +173,21 @@ const LoginPage = ({ setToken }) => {
               </div>
               <div>
                 <img
-                  style={{ width: "500px", justifyContent: "center" }}
+                  style={{ width: "400px", justifyContent: "center" }}
                   alt="side-1"
                   src={Image2}
                 />
               </div>
               <div>
                 <img
-                  style={{ width: "500px", justifyContent: "center" }}
+                  style={{ width: "400px", justifyContent: "center" }}
                   alt="side-1"
                   src={Image3}
                 />
               </div>
               <div>
                 <img
-                  style={{ width: "500px", justifyContent: "center" }}
+                  style={{ width: "400px", justifyContent: "center" }}
                   alt="side-1"
                   src={Image4}
                 />
@@ -203,7 +202,7 @@ const LoginPage = ({ setToken }) => {
             >
               <Text
                 style={{
-                  fontSize: "36px",
+                  fontSize: "28px",
                   fontWeight: 900,
                   color: "#1890ff",
                 }}
@@ -318,7 +317,7 @@ const LoginPage = ({ setToken }) => {
         <Row className="footer" data-testid="footer">
           <Col
             span={24}
-            style={{ textAlign: "center", paddingTop: 20 }}
+            style={{ textAlign: "center", paddingTop: 10 }}
           >
             <Text style={{ fontSize: "16px", color: "#888888" }}>
               {t("footer.line1")}
@@ -341,5 +340,5 @@ const LoginPage = ({ setToken }) => {
 export default LoginPage;
 
 LoginPage.propTypes = {
-  setToken: PropTypes.string.isRequired,
+  setToken: PropTypes.func,
 };

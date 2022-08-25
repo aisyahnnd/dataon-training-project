@@ -1,7 +1,14 @@
 import { Button } from "antd";
 import PropTypes from "prop-types";
 
-const ButtonIcon = ({ textButton, style, icon, onClick, type }) => {
+const ButtonIcon = ({
+  textButton,
+  style,
+  icon,
+  onClick,
+  type,
+  disabled,
+}) => {
   return (
     <Button
       data-testid="buttonIcon"
@@ -9,6 +16,7 @@ const ButtonIcon = ({ textButton, style, icon, onClick, type }) => {
       style={style}
       type={type}
       onClick={onClick}
+      disabled={disabled}
     >
       {textButton}
     </Button>

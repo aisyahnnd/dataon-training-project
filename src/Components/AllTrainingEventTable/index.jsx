@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 const AllTrainingEventTable = ({ dataTable, columns }) => {
   const { t } = useTranslation(["dashboard"]);
+
   return (
     <div className="site-card-wrapper">
       <LabelSection
@@ -13,12 +14,12 @@ const AllTrainingEventTable = ({ dataTable, columns }) => {
           color: "#2db7f5",
           fontWeight: "bold",
         }}
-      ></LabelSection>
+      />
       <TableData
         dataTable={dataTable}
         pagination={{ defaultPageSize: 10 }}
         columns={columns}
-      ></TableData>
+      />
     </div>
   );
 };

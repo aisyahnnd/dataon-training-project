@@ -13,6 +13,7 @@ import TableData from "./TableData";
 import TextInput from "./TextInput";
 import Toggle from "./Toggle";
 import Loading from "./Loading";
+import LinkEvent from "./LinkEvent";
 
 export {
   SectionHeader,
@@ -30,4 +31,5 @@ export {
   TextInput,
   Toggle,
   Loading,
+  LinkEvent,
 };

@@ -236,21 +236,21 @@ export const ContextWrapper = (props) => {
     }
   };
 
-  //for search card training
-  const [valueCardTraining, setValueCardTraining] = useState("");
-  const SearchCardTraining = async (valueCardTraining) => {
+  //for search training
+  const [valueSearchTraining, setValueSearchTraining] = useState("");
+  const GetSearchTraining = async (valueSearchTraining) => {
     const myTraining = await Axios.get(
-      `/users/1/trainings?search=${valueCardTraining}`
+      `/users/1/trainings?search=${valueSearchTraining}`
     );
     const allTraining = await Axios.get(
-      `/trainings?search=${valueCardTraining}`
+      `/trainings?search=${valueSearchTraining}`
     );
 
     Promise.all([myTraining, allTraining]).then(
       ([{ data: dataMyTraining }, { data: dataAllTraining }]) => {
         setDataMyTraining(dataMyTraining);
         setDataAllTrainings(dataAllTraining);
-        setValueCardTraining(valueCardTraining);
+        setValueSearchTraining(valueSearchTraining);
       }
     );
   };
@@ -278,8 +278,8 @@ export const ContextWrapper = (props) => {
         GetAllTraining,
         GetMyTraining,
         DataAllTrainings,
-        CreateDataTraining,
         DataMyTraining,
+        CreateDataTraining,
         EditDataTraining,
         valueInputSearching,
         setValueInputSearching,
@@ -287,9 +287,9 @@ export const ContextWrapper = (props) => {
         deleteStatus,
         setDeleteStatus,
         DeleteDataMyTraining,
-        SearchCardTraining,
-        valueCardTraining,
-        setValueCardTraining,
+        GetSearchTraining,
+        valueSearchTraining,
+        setValueSearchTraining,
         debounce,
         eventStatus,
         setEventStatus,

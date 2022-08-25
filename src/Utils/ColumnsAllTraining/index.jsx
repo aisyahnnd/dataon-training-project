@@ -1,9 +1,10 @@
 import { Rate } from "antd";
+import { LinkEvent } from "@/Components";
 import CoverDate from "@/Utils/CoverDate";
 
 export const columnsAllTraining = [
   {
-    title: "#",
+    title: "No",
     key: "index",
     render: (text, record, index) => index + 1,
   },
@@ -12,12 +13,14 @@ export const columnsAllTraining = [
     dataIndex: "eventName",
     key: "eventName",
     sorter: (a, b) => a.eventName.localeCompare(b.eventName),
+    render: (eventName, item) => (
+      <LinkEvent title={eventName} id={item.id} userId={null} />
+    ),
   },
   {
     title: "Training Type",
     dataIndex: "isOnlineClass",
     key: "isOnlineClass",
-
     render: (text) => {
       return <span>{text ? "Online Class" : "Offline Class"}</span>;
     },
@@ -60,7 +63,6 @@ export const columnsAllTraining = [
     title: "Training Status",
     dataIndex: "isComplete",
     key: "isComplete",
-
     render: (text) => {
       return <span>{text ? "Finish" : "On Going"}</span>;
     },

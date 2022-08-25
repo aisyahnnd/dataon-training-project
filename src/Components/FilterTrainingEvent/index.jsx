@@ -24,6 +24,7 @@ const FilterTrainingEvent = () => {
     setEventType,
     eventStatus,
     setEventStatus,
+    setValueSearchTraining,
   } = useContext(AppContext);
   const onClickAsCard = () => {
     setView(true);
@@ -34,7 +35,8 @@ const FilterTrainingEvent = () => {
   const onChangeSearching = (value) => {
     setEventStatus("");
     setEventType("");
-    setValueInputSearching(value);
+    // setValueInputSearching(value);
+    setValueSearchTraining(value);
   };
   const eventChange = (value) => {
     setValueInputSearching("");

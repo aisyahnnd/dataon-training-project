@@ -100,7 +100,7 @@ const SingleMyTrainingEvent = (props) => {
         className="row-top"
         data-testid="mytraining-card"
       >
-        <Col>
+        <Col xs={12} sm={12} md={12} lg={8} xl={8}>
           <Image
             alt="example"
             src={item?.thumbnail}
@@ -113,7 +113,14 @@ const SingleMyTrainingEvent = (props) => {
             }}
           />
         </Col>
-        <Col className="row-top-detail">
+        <Col
+          className="row-top-detail"
+          xs={12}
+          sm={12}
+          md={12}
+          lg={16}
+          xl={16}
+        >
           <Space
             direction="vertical"
             size={3}

@@ -1,4 +1,6 @@
 import { LabelSection, TableData } from "@/Components";
+import { AppContext } from "@/Context";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const MyTrainingEventTable = ({ dataTable, columns }) => {
@@ -15,9 +17,9 @@ const MyTrainingEventTable = ({ dataTable, columns }) => {
           fontWeight: "bold",
         }}
       />
+
       <TableData
-        key={dataTable.id}
-        dataTable={dataTable.data}
+        dataTable={dataTable}
         pagination={{ defaultPageSize: 2 }}
         columns={columns}
       />

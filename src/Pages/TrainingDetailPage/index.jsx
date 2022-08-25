@@ -27,6 +27,7 @@ import { ButtonIcon, SectionHeader } from "@/Components";
 import { AppContext } from "@/Context";
 import { useTranslation } from "react-i18next";
 import "./TrainingDetailPage.css";
+import "antd/dist/antd.css";
 
 const { confirm } = Modal;
 const { Text, Title } = Typography;
@@ -135,17 +136,32 @@ const TrainingDetailPage = () => {
               >
                 <Row>
                   <Col span={24}>
-                    <ButtonIcon
-                      textButton={t(
-                        "trainingCreateEditDetail.button.join"
-                      )}
-                      style={{
-                        borderRadius: 5,
-                        width: "100%",
-                        fontWeight: 700,
-                      }}
-                      type={"primary"}
-                    ></ButtonIcon>
+                    {path === "mytraining" ? (
+                      <ButtonIcon
+                        textButton={t(
+                          "trainingCreateEditDetail.button.join"
+                        )}
+                        style={{
+                          borderRadius: 5,
+                          width: "100%",
+                          fontWeight: 700,
+                        }}
+                        type={"primary"}
+                        disabled
+                      />
+                    ) : (
+                      <ButtonIcon
+                        textButton={t(
+                          "trainingCreateEditDetail.button.join"
+                        )}
+                        style={{
+                          borderRadius: 5,
+                          width: "100%",
+                          fontWeight: 700,
+                        }}
+                        type={"primary"}
+                      />
+                    )}
                   </Col>
                 </Row>
                 <Row
