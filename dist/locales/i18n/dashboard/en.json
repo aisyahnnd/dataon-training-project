@@ -1,0 +1,33 @@
+{
+  "dashboard": "Dashboard",
+  "breadcrumb": {
+    "register": "Register",
+    "training": "Training",
+    "trainingEvent": "Training Event Detail",
+    "trainingCreate": "Create Training",
+    "mytrainingDetail": "Detail Page",
+    "mytrainingEdit": "Edit",
+    "mytrainingEditDetail": "Edit Detail",
+    "mytraining": "My Training"
+  },
+  "buttonCreate": "Create Training Event",
+  "search": {
+    "label": "Search Training",
+    "placeholder": "Search Training"
+  },
+  "type": "Event Type",
+  "status": {
+    "label": "Status",
+    "option": {
+      "part1": "Finish",
+      "part2": "On Going"
+    }
+  },
+  "related": "Related Job Only",
+  "buttonView": {
+    "part1": "View as Card",
+    "part2": "View All List"
+  },
+  "myTrainingEvent": "My Training Event",
+  "allTrainingEvent": "All Training Event"
+}

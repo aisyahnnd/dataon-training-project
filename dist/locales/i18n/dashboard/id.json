@@ -1,0 +1,33 @@
+{
+  "dashboard": "Dasbor",
+  "breadcrumb": {
+    "register": "Daftar",
+    "training": "Pelatihan",
+    "trainingEvent": "Detail Acara Pelatihan",
+    "trainingCreate": "Buat Pelatihan",
+    "mytrainingDetail": "Halaman Detail",
+    "mytrainingEdit": "Ubah",
+    "mytrainingEditDetail": "Ubah Detail",
+    "mytraining": "Pelatihan Saya"
+  },
+  "buttonCreate": "Buat Acara Pelatihan",
+  "search": {
+    "label": "Cari Pelatihan",
+    "placeholder": "Cari Pelatihan"
+  },
+  "type": "Tipe Acara",
+  "status": {
+    "label": "Status",
+    "option": {
+      "part1": "Selesai",
+      "part2": "Akan Datang"
+    }
+  },
+  "related": "Hanya Pekerjaan Terkait",
+  "buttonView": {
+    "part1": "Lihat sebagai Kartu",
+    "part2": "Lihat Semua Daftar"
+  },
+  "myTrainingEvent": "Acara Pelatihan Saya",
+  "allTrainingEvent": "Semua Acara Pelatihan"
+}

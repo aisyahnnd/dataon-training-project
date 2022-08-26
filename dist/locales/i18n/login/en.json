@@ -1,0 +1,34 @@
+{
+  "account": {
+    "part1": "Haven't account?",
+    "part2": "Register"
+  },
+  "alert": "Wrong username/password!",
+  "button": "Login",
+  "checkbox": "Remember me",
+  "content": "Please enter your credential to access the system",
+  "footer": {
+    "line1": "This product is licensed for Dataon Corporation",
+    "line2": "&copy; 1999 - 2022 DataOn Technology. All Rights Reserved"
+  },
+  "header": "Human Resources Information System",
+  "password": {
+    "forgotPassword": "Forgot password?",
+    "label": "Password",
+    "messages": {
+      "part1": "Please input your password!",
+      "part2": "Passwords must be at least 8 characters"
+    },
+    "placeholder": "Password"
+  },
+  "username": {
+    "label": "Username",
+    "messages": {
+      "part1": "Please input your username!",
+      "part2": "Username must be less than 20",
+      "part3": "Username must be alphabets and numbers only"
+    },
+    "placeholder": "Enter your username here"
+  },
+  "notification": "Login Success"
+}

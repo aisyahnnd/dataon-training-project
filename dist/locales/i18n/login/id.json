@@ -1,0 +1,34 @@
+{
+  "account": {
+    "part1": "Belum punya akun?",
+    "part2": "Daftar"
+  },
+  "alert": "Username/kata sandi salah!",
+  "button": "Masuk",
+  "checkbox": "Ingat saya",
+  "content": "Silakan masukkan kredensial Anda untuk mengakses sistem",
+  "footer": {
+    "line1": "Produk ini dilisensikan untuk Dataon Corporation",
+    "line2": "&copy; 1999 - 2022 Teknologi DataOn. Seluruh Hak Cipta"
+  },
+  "header": "Sistem Informasi Sumber Daya Manusia",
+  "password": {
+    "forgotPassword": "Lupa kata sandi?",
+    "label": "Kata Sandi",
+    "messages": {
+      "part1": "Silakan masukkan kata sandi Anda!",
+      "part2": "Kata sandi harus minimal 8 karakter"
+    },
+    "placeholder": "Kata Sandi"
+  },
+  "username": {
+    "label": "Username",
+    "messages": {
+      "part1": "Silakan masukkan username Anda!",
+      "part2": "Username harus kurang dari 20",
+      "part3": "Username harus huruf dan angka saja"
+    },
+    "placeholder": "Masukkan username Anda di sini"
+  },
+  "notification": "Berhasil Masuk"
+}
