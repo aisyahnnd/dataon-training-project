@@ -18,7 +18,6 @@ const FilterTrainingEvent = () => {
   const {
     view,
     setView,
-    setValueInputSearching,
     debounce,
     eventType,
     setEventType,
@@ -35,16 +34,15 @@ const FilterTrainingEvent = () => {
   const onChangeSearching = (value) => {
     setEventStatus("");
     setEventType("");
-    // setValueInputSearching(value);
     setValueSearchTraining(value);
   };
   const eventChange = (value) => {
-    setValueInputSearching("");
+    setValueSearchTraining("");
     setEventStatus("");
     setEventType(value);
   };
   const statusChange = (value) => {
-    setValueInputSearching("");
+    setValueSearchTraining("");
     setEventType("");
     setEventStatus(value);
   };
