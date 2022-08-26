@@ -14,6 +14,7 @@ import TextInput from "./TextInput";
 import Toggle from "./Toggle";
 import Loading from "./Loading";
 import LinkEvent from "./LinkEvent";
+import SwitchTransfer from "./SwitchTransfer";
 
 export {
   SectionHeader,
@@ -32,4 +33,5 @@ export {
   Toggle,
   Loading,
   LinkEvent,
+  SwitchTransfer,
 };

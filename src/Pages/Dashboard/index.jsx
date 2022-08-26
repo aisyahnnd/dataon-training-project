@@ -31,7 +31,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     GetSearchTraining(valueSearchTraining);
-  }, [valueSearchTraining, deleteStatus]);
+  }, [deleteStatus, valueSearchTraining]);
 
   useEffect(() => {
     GetDataSelectEventType(eventType);

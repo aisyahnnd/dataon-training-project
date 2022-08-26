@@ -17,9 +17,8 @@ import {
 } from "react-router-dom";
 import { AppContext } from "@/Context";
 import { useTranslation } from "react-i18next";
-import { SectionHeader } from "@/Components";
+import { SectionHeader, SwitchTransfer } from "@/Components";
 import moment from "moment";
-import SwitchTransfer from "@/Components/SwitchTransfer";
 
 const { RangePicker } = DatePicker;
 
@@ -155,11 +154,13 @@ const TrainingCreateEditPage = () => {
                 required: true,
               },
             ]}
+            data-testid="isOnlineClass"
           >
             <Select
               placeholder={t(
                 "trainingCreateEditDetail.eventType.placeholder"
               )}
+              data-testid="eventType"
             >
               <Select.Option
                 name="isOnlineClass"
@@ -190,6 +191,7 @@ const TrainingCreateEditPage = () => {
             ]}
           >
             <Input
+              data-testid="eventName"
               placeholder={t(
                 "trainingCreateEditDetail.eventName.placeholder"
               )}
@@ -206,6 +208,7 @@ const TrainingCreateEditPage = () => {
             ]}
           >
             <Input
+              data-testid="trainer"
               placeholder={t(
                 "trainingCreateEditDetail.trainer.placeholder"
               )}
@@ -222,7 +225,11 @@ const TrainingCreateEditPage = () => {
               },
             ]}
           >
-            <RangePicker format="YYYY-MM-DD HH:mm" showTime />
+            <RangePicker
+              data-testid="date"
+              format="YYYY-MM-DD HH:mm"
+              showTime
+            />
           </Form.Item>
           <Form.Item
             name="isComplete"
@@ -233,6 +240,7 @@ const TrainingCreateEditPage = () => {
                 message: t("trainingCreateEditDetail.status.message"),
               },
             ]}
+            data-testid="status"
           >
             <Radio.Group
               value={
@@ -297,6 +305,7 @@ const TrainingCreateEditPage = () => {
           </Form.Item>
           <Form.Item
             name="additionalInfo"
+            data-testid="additionalInfo"
             label={t("trainingCreateEditDetail.information.label")}
             value={dataEdit.additionalInfo}
           >
@@ -339,6 +348,7 @@ const TrainingCreateEditPage = () => {
               <Button
                 type="primary"
                 htmlType="submit"
+                data-testid="submitButton"
                 style={{ borderRadius: 5, width: 100 }}
               >
                 {t("trainingCreateEditDetail.button.submit")}
