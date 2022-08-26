@@ -28,7 +28,6 @@ const SwitchTransfer = () => {
     setTargetKeys(newTargetKeys);
     setMockData(newMockData);
   };
-  console.log(88, mockData);
 
   useEffect(() => {
     getMock();
