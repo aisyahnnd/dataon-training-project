@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { useContext, useEffect } from "react";
 import { AppContext } from "@/Context";
 import {
@@ -43,7 +43,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <SectionHeader viewButton></SectionHeader>
+      <SectionHeader viewButton moreButton />
       <FilterTrainingEvent />
       {view ? (
         <>

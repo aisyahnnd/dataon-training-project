@@ -19,6 +19,7 @@ import { AppContext } from "@/Context";
 import { useTranslation } from "react-i18next";
 import { SectionHeader } from "@/Components";
 import moment from "moment";
+import SwitchTransfer from "@/Components/SwitchTransfer";
 
 const { RangePicker } = DatePicker;
 
@@ -121,7 +122,7 @@ const TrainingCreateEditPage = () => {
 
   return (
     <>
-      <SectionHeader />
+      <SectionHeader viewButton={false} moreButton />
       <div className="site-card-wrapper">
         <Form
           data-testid="form"
@@ -234,7 +235,7 @@ const TrainingCreateEditPage = () => {
             ]}
           >
             <Radio.Group
-              defaultValue={
+              value={
                 dataEdit.isComplete === "true"
                   ? t("trainingCreateEditDetail.status.radio1")
                   : t("trainingCreateEditDetail.status.radio2")
@@ -305,6 +306,15 @@ const TrainingCreateEditPage = () => {
               )}
             />
           </Form.Item>
+          {path === "mytraining" ||
+          loc === `/training/edit/${params.id}` ? (
+            <Form.Item
+              name="employee"
+              label={t("trainingCreateEditDetail.employee")}
+            >
+              <SwitchTransfer />
+            </Form.Item>
+          ) : null}
           <Row style={{ paddingTop: 100 }}>
             <Col
               span={24}

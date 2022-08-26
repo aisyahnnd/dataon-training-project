@@ -160,24 +160,30 @@ export const ContextWrapper = (props) => {
     }
   };
 
-  //for searching input filter
-  const [valueInputSearching, setValueInputSearching] = useState("");
   //for filter event status
   const [eventStatus, setEventStatus] = useState("");
   //for filter event status
   const [eventType, setEventType] = useState("");
-  //get data searching
-  const GetDataSearching = async (valueInputSearching) => {
-    let endpoints = [
-      `/users/1/trainings?search=${valueInputSearching}/`,
-      `/trainings?search=${valueInputSearching}`,
-    ];
-    await Promise.all(
-      endpoints.map((endpoint) => Axios.get(endpoint))
-    ).then(
-      ([{ data: dataUserTraining }, { data: dataAllTraining }]) => {
+  //for get length data
+  const [lengthMyTraining, setLengthMyTraining] = useState();
+  const [lengthAllTraining, setLengthAllTraining] = useState();
+  //for search training
+  const [valueSearchTraining, setValueSearchTraining] = useState("");
+  const GetSearchTraining = async (valueSearchTraining) => {
+    const myTraining = await Axios.get(
+      `/users/1/trainings?search=${valueSearchTraining}`
+    );
+    const allTraining = await Axios.get(
+      `/trainings?search=${valueSearchTraining}`
+    );
+
+    Promise.all([myTraining, allTraining]).then(
+      ([{ data: dataMyTraining }, { data: dataAllTraining }]) => {
+        setDataMyTraining(dataMyTraining);
         setDataAllTrainings(dataAllTraining);
-        setDataMyTraining(dataUserTraining);
+        setValueSearchTraining(valueSearchTraining);
+        setLengthMyTraining(dataMyTraining._metadata.total_count);
+        setLengthAllTraining(dataAllTraining._metadata.total_count);
       }
     );
   };
@@ -194,6 +200,8 @@ export const ContextWrapper = (props) => {
       ([{ data: dataUserTraining }, { data: dataAllTraining }]) => {
         setDataAllTrainings(dataAllTraining);
         setDataMyTraining(dataUserTraining);
+        setLengthMyTraining(dataUserTraining._metadata.total_count);
+        setLengthAllTraining(dataAllTraining._metadata.total_count);
       }
     );
   };
@@ -209,6 +217,8 @@ export const ContextWrapper = (props) => {
       ([{ data: dataUserTraining }, { data: dataAllTraining }]) => {
         setDataAllTrainings(dataAllTraining);
         setDataMyTraining(dataUserTraining);
+        setLengthMyTraining(dataUserTraining._metadata.total_count);
+        setLengthAllTraining(dataAllTraining._metadata.total_count);
       }
     );
   };
@@ -234,25 +244,6 @@ export const ContextWrapper = (props) => {
           console.log(error);
         });
     }
-  };
-
-  //for search training
-  const [valueSearchTraining, setValueSearchTraining] = useState("");
-  const GetSearchTraining = async (valueSearchTraining) => {
-    const myTraining = await Axios.get(
-      `/users/1/trainings?search=${valueSearchTraining}`
-    );
-    const allTraining = await Axios.get(
-      `/trainings?search=${valueSearchTraining}`
-    );
-
-    Promise.all([myTraining, allTraining]).then(
-      ([{ data: dataMyTraining }, { data: dataAllTraining }]) => {
-        setDataMyTraining(dataMyTraining);
-        setDataAllTrainings(dataAllTraining);
-        setValueSearchTraining(valueSearchTraining);
-      }
-    );
   };
 
   //debounce
@@ -281,9 +272,6 @@ export const ContextWrapper = (props) => {
         DataMyTraining,
         CreateDataTraining,
         EditDataTraining,
-        valueInputSearching,
-        setValueInputSearching,
-        GetDataSearching,
         deleteStatus,
         setDeleteStatus,
         DeleteDataMyTraining,
@@ -303,6 +291,8 @@ export const ContextWrapper = (props) => {
         GetDataDetail,
         createStatus,
         setCreateStatus,
+        lengthMyTraining,
+        lengthAllTraining,
       }}
     >
       {props.children}

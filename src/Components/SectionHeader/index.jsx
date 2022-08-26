@@ -12,7 +12,7 @@ import {
   useParams,
 } from "react-router-dom";
 
-const SectionHeader = ({ viewButton, editButton }) => {
+const SectionHeader = ({ viewButton, editButton, moreButton }) => {
   const { t } = useTranslation(["common", "dashboard", "content"]);
   const navigate = useNavigate();
   const params = useParams();
@@ -155,27 +155,29 @@ const SectionHeader = ({ viewButton, editButton }) => {
                   <PlusOutlined /> {t("dashboard:buttonCreate")}
                 </Button>
               ) : null}
-              <Dropdown.Button
-                type="dashed"
-                style={{
-                  borderRadius: 5,
-                  fontWeight: "bold",
-                  marginLeft: 10,
-                  marginRight: 20,
-                }}
-                overlay={
-                  localStorage.getItem("user-info")
-                    ? menuLogout
-                    : menuLogin
-                }
-                trigger={["click"]}
-                icon={<MoreOutlined />}
-              >
-                {user
-                  ? `${t("common:greeting")}, ${user.username}`
-                  : "More"}
-              </Dropdown.Button>
             </>
+          )}
+          {moreButton && (
+            <Dropdown.Button
+              type="dashed"
+              style={{
+                borderRadius: 5,
+                fontWeight: "bold",
+                marginLeft: 10,
+                marginRight: 20,
+              }}
+              overlay={
+                localStorage.getItem("user-info")
+                  ? menuLogout
+                  : menuLogin
+              }
+              trigger={["click"]}
+              icon={<MoreOutlined />}
+            >
+              {user
+                ? `${t("common:greeting")}, ${user.username}`
+                : "More"}
+            </Dropdown.Button>
           )}
         </Col>
       </Row>

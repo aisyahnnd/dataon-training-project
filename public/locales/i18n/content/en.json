@@ -71,6 +71,7 @@
       "label": "Information",
       "placeholder": "Input Information Event"
     },
+    "employee": "Employee",
     "button": {
       "back": "Back",
       "edit": "Edit",
